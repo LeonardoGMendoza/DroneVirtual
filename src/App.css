@@ -1,38 +1,145 @@
-.App {
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.drone-3d-view {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  border: 2px solid #00ff88;
+  z-index: 1000;
+}
+
+.control-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+  min-width: 300px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.flight-btn {
+  background: #00ff88;
+  color: black;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.flight-btn:hover:not(:disabled) {
+  background: #00cc66;
+  transform: translateY(-2px);
+}
+
+.flight-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.flight-btn.flying {
+  background: #ffaa00;
+}
+
+.sensor-panel {
+  margin-top: 10px;
+}
+
+.sensor-item {
+  margin: 12px 0;
+}
+
+.sensor-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.sensor-label {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.sensor-value {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.sensor-bar {
+  width: 100%;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sensor-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 3px;
+}
+
+.alert {
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.alert.warning {
+  background: rgba(255, 170, 0, 0.2);
+  border: 1px solid #ffaa00;
+  color: #ffaa00;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.alert.danger {
+  background: rgba(255, 68, 68, 0.2);
+  border: 1px solid #ff4444;
+  color: #ff4444;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.drone-marker {
+  font-size: 24px;
+  filter: drop-shadow(0 0 10px #00ff88);
+  animation: float 2s ease-in-out infinite;
+  transform: translate(-50%, -50%);
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50% { transform: translate(-50%, -50%) translateY(-8px); }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3 {
+  margin: 0 0 15px 0;
+  color: #00ff88;
+  font-size: 16px;
 }
